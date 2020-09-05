@@ -4,8 +4,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.springframework.stereotype.Repository;
+
 import com.home.aws.codebuild.api.model.Order;
 
+@Repository
 public class OrdersDAO {
 
 	public List<Order> getOrders() {
