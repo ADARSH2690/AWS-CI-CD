@@ -1,6 +1,8 @@
 package com.home.aws.codebuild.api;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -26,7 +28,8 @@ public class SpringbootAwsCiCdCodeBuildApplication {
 	
 	@GetMapping
 	public List<Order> getAllOrders(){
-		return ordersDAO.getOrders();
+		return ordersDAO.getOrders().stream().sorted(Comparator.comparing(Order::getPrice))
+				.collect(Collectors.toList());
 	}
 
 }
